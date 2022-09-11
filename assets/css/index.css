@@ -282,7 +282,7 @@ Word: number.
 
     color: var(--hw-color-blue);
     font-family: var(--hw-font-family-small);
-    font-size: min(30px, 100%);
+    font-size: 0;
     line-height: 1;
     white-space: nowrap;
 
