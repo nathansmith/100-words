@@ -27,7 +27,8 @@ Variables.
   --hw-gutter-double: calc(var(--hw-gutter) * 2);
 
   /* Layout. */
-  --hw-layout-main-background-color: #292623;
+  --hw-layout-main-background-color-start: #292623;
+  --hw-layout-main-background-color-end: #494643;
   --hw-layout-footer-background-color: #191613;
 
   /* Transition duration. */
@@ -66,7 +67,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 
   color: var(--hw-color-light);
-  background: var(--hw-layout-main-background-color);
+  background-color: var(--hw-layout-footer-background-color);
   cursor: default;
 
   font-family: var(--hw-font-family-body);
@@ -134,6 +135,13 @@ Layout: main.
 .hw-layout__main {
   flex: 1;
 
+  /* prettier-ignore */
+  background-image: linear-gradient(
+    45deg,
+    var(--hw-layout-main-background-color-start),
+    var(--hw-layout-main-background-color-end)
+  );
+
   font-family: var(--hw-font-family-serif);
 
   /* prettier-ignore */
@@ -186,8 +194,6 @@ Layout: footer.
 
   gap: var(--hw-gutter);
   padding: var(--hw-gutter);
-
-  background-color: var(--hw-layout-footer-background-color);
 }
 
 /*
@@ -281,7 +287,6 @@ Word: link.
   border-bottom-color: var(--hw-color-pink);
   border-bottom-style: dashed;
   border-bottom-width: 1px;
-  padding-bottom: 2px;
   text-decoration: none;
 }
 
