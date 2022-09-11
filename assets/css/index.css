@@ -1,0 +1,318 @@
+/*
+==========
+Variables.
+==========
+*/
+
+:root {
+    /* Border radius. */
+    --hw-border-radius: 3px;
+
+    /* Colors. */
+    --hw-color-dark: #090603;
+    --hw-color-blue: #0ff;
+    --hw-color-gray: #a9a6a3;
+    --hw-color-light: #e9e6e3;
+    --hw-color-pink: #f0f;
+    --hw-color-white: #fff;
+    --hw-color-yellow: #ffc;
+
+    /* Fonts. */
+    --hw-font-family-body: 'Arial', sans-serif;
+    --hw-font-family-serif: 'Garamond', serif;
+    --hw-font-family-small: 'Verdana', sans-serif;
+
+    /* Layout. */
+    --hw-layout-main-background-color: #292623;
+    --hw-layout-footer-background-color: #191613;
+
+    /* Transition duration. */
+    --hw-transition-duration: 0.25s;
+}
+
+/*
+=======
+Global.
+=======
+*/
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+    NOTE: Removes outline for mouse only.
+
+    https://css-tricks.com/the-focus-visible-trick
+*/
+*:focus:not(:focus-visible) {
+    outline: 0;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    color: var(--hw-color-light);
+    background: var(--hw-layout-main-background-color);
+    cursor: default;
+
+    font-family: var(--hw-font-family-body);
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+
+    /* Prevent accidental text selection. */
+    user-select: none;
+}
+
+button {
+    font: inherit;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+/*
+===========
+Scrollbars.
+===========
+*/
+
+*::-webkit-scrollbar {
+    width: 4px !important;
+    height: 4px !important;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--hw-color-gray) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--hw-color-light) !important;
+}
+
+/*
+=======
+Layout.
+=======
+*/
+
+.hw-layout {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/*
+=============
+Layout: main.
+=============
+*/
+
+.hw-layout__main {
+    flex: 1;
+
+    font-family: var(--hw-font-family-serif);
+
+    /* prettier-ignore */
+    font-size: clamp(
+        1.25rem,
+        min(5vw, 5vh),
+        3.125rem
+    );
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-gutter: stable both-edges;
+
+    padding: max(30px, 1em);
+}
+
+.hw-layout__main__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 30em;
+    min-height: 100%;
+}
+
+.hw-layout__main__inner__content {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: calc(0.25em + 20px);
+}
+
+/*
+===============
+Layout: footer.
+===============
+*/
+
+.hw-layout__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1.5em;
+    padding: 1.5em;
+
+    background-color: var(--hw-layout-footer-background-color);
+}
+
+/*
+=======
+Button.
+=======
+*/
+
+.hw-button {
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+
+    color: var(--hw-color-dark);
+
+    /* prettier-ignore */
+    background-image: linear-gradient(
+        var(--hw-color-light),
+        var(--hw-color-gray)
+    );
+
+    border-radius: var(--hw-border-radius);
+
+    /* prettier-ignore */
+    box-shadow:
+        0 0 0 2px var(--hw-color-dark),
+        0 0 0 3px var(--hw-color-white)
+    ;
+
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 0 1px 0 var(--hw-color-white);
+    text-transform: uppercase;
+
+    padding-top: 1em;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+    padding-bottom: 1em;
+
+    transition-duration: var(--hw-transition-duration);
+    transition-property: box-shadow;
+}
+
+.hw-button:active {
+    transform: translateY(1px);
+}
+
+.hw-button:hover {
+    box-shadow:
+        0 0 0 2px var(--hw-color-dark),
+        0 0 0 5px var(--hw-color-blue)
+    ;
+}
+
+/*
+=====
+Word.
+=====
+*/
+
+.hw-word {
+    opacity: 0;
+    pointer-events: none;
+
+    border-radius: var(--hw-border-radius);
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+
+    transform: translateY(20%);
+    transition-duration: var(--hw-transition-duration);
+    transition-property: background-color, color, opacity, transform;
+
+    position: relative;
+}
+
+.hw-word a {
+    color: inherit;
+    border-bottom-color: var(--hw-color-pink);
+    border-bottom-style: dashed;
+    border-bottom-width: 1px;
+    text-decoration: none;
+}
+
+.hw-word:hover {
+    color: var(--hw-color-dark);
+    background-color: var(--hw-color-yellow);
+}
+
+/*
+=============
+Word: number.
+=============
+*/
+
+.hw-word:before {
+    content: attr(data-hw-number);
+    pointer-events: none;
+
+    color: var(--hw-color-blue);
+    font-family: var(--hw-font-family-small);
+    font-size: min(30px, 100%);
+    line-height: 1;
+
+    padding-bottom: 5px;
+
+    transition-duration: var(--hw-transition-duration);
+    transition-property: font-size;
+    transform: translate(-50%, -100%);
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+.hw-word[data-hw-is-visible="true"]:before {
+    font-size: 13px;
+}
+
+/*
+==============
+Word: visible.
+==============
+*/
+
+.hw-word[data-hw-is-visible="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+}
+
+/*
+==================
+Word: punctuation.
+==================
+*/
+
+.hw-punctuation {
+    color: var(--hw-color-pink);
+}
