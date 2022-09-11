@@ -58,7 +58,11 @@
         clearTimeout(timerForAnimation);
 
         // Scroll.
-        layoutMain.scrollTo(0, 0);
+        layoutMain.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant'
+        });
 
         // Loop through.
         wordList.forEach((word) => {
