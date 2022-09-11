@@ -85,18 +85,23 @@
 
         // Focus.
         word.focus();
-
       }
 
       // Keep going?
-      if (i++ < wordList.length) {
-        // Start timer.
-        timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
+      if (++i < wordList.length) {
+        // Await frame.
+        window.requestAnimationFrame(() => {
+          // Start timer.
+          timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
+        });
       }
     };
 
-    // Begin.
-    timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
+    // Await frame.
+    window.requestAnimationFrame(() => {
+      // Begin.
+      timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
+    });
   };
 
   // =======================

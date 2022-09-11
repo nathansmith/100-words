@@ -265,17 +265,39 @@ Word.
   position: relative;
 }
 
+.hw-word:hover {
+  color: var(--hw-color-dark);
+  background-color: var(--hw-color-yellow);
+}
+
+/*
+===========
+Word: link.
+===========
+*/
+
 .hw-word a {
   color: inherit;
   border-bottom-color: var(--hw-color-pink);
   border-bottom-style: dashed;
   border-bottom-width: 1px;
+  padding-bottom: 2px;
   text-decoration: none;
 }
 
-.hw-word:hover {
-  color: var(--hw-color-dark);
-  background-color: var(--hw-color-yellow);
+.hw-word a:after {
+  content: '';
+  border-radius: var(--hw-border-radius);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hw-word:hover a {
+  border-bottom-style: solid;
 }
 
 /*
