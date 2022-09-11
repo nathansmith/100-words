@@ -22,6 +22,10 @@ Variables.
     --hw-font-family-serif: 'Garamond', serif;
     --hw-font-family-small: 'Verdana', sans-serif;
 
+    /* Gutter. */
+    --hw-gutter: 20px;
+    --hw-gutter-double: calc(var(--hw-gutter) * 2);
+
     /* Layout. */
     --hw-layout-main-background-color: #292623;
     --hw-layout-footer-background-color: #191613;
@@ -143,7 +147,10 @@ Layout: main.
     overflow-y: auto;
     scrollbar-gutter: stable both-edges;
 
-    padding: max(30px, 1em);
+    padding-top: var(--hw-gutter-double);
+    padding-left: var(--hw-gutter);
+    padding-right: var(--hw-gutter);
+    padding-bottom: var(--hw-gutter-double);
 }
 
 .hw-layout__main__inner {
@@ -177,8 +184,8 @@ Layout: footer.
     align-items: center;
     justify-content: center;
 
-    gap: 1.5em;
-    padding: 1.5em;
+    gap: var(--hw-gutter);
+    padding: var(--hw-gutter);
 
     background-color: var(--hw-layout-footer-background-color);
 }
