@@ -74,6 +74,10 @@
             if (word) {
                 // Set number.
                 word.setAttribute(DATA_VISIBLE, true);
+
+                // Focus.
+                word.focus();
+
             }
 
             // Keep going?
