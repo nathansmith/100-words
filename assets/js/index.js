@@ -3,182 +3,182 @@
 // ===============
 
 (() => {
-    // ==========
-    // Constants.
-    // ==========
+  // ==========
+  // Constants.
+  // ==========
 
-    const ANIMATION_DELAY = 300;
-    const CLICK = 'click';
+  const ANIMATION_DELAY = 300;
+  const CLICK = 'click';
 
-    const DATA_ACTION = 'data-hw-action';
-    const DATA_NUMBER = 'data-hw-number';
-    const DATA_VISIBLE = 'data-hw-is-visible';
-    const DATA_YEAR = 'data-hw-year-start'
+  const DATA_ACTION = 'data-hw-action';
+  const DATA_NUMBER = 'data-hw-number';
+  const DATA_VISIBLE = 'data-hw-is-visible';
+  const DATA_YEAR = 'data-hw-year-start'
 
-    // ==========
+  // ==========
+  // Set later.
+  // ==========
+
+  let timerForAnimation;
+
+  // =============
+  // Get elements.
+  // =============
+
+  const buttonReveal = document.querySelector(`[${DATA_ACTION}="reveal"]`);
+  const buttonStart = document.querySelector(`[${DATA_ACTION}="start"]`);
+  const layoutMain = document.querySelector('.hw-layout__main');
+  const wordList = document.querySelectorAll('.hw-word');
+  const yearSpan = document.querySelector(`[${DATA_YEAR}]`);
+
+  // ==============
+  // Event: reveal.
+  // ==============
+
+  const handleClickReveal = () => {
+    // Clear timer.
+    clearTimeout(timerForAnimation);
+
+    // Loop through.
+    wordList.forEach((word) => {
+      // Hide.
+      word.setAttribute(DATA_VISIBLE, false);
+
+      // Show.
+      word.setAttribute(DATA_VISIBLE, true);
+    });
+  };
+
+  // =============
+  // Event: start.
+  // =============
+
+  const handleClickStart = () => {
+    // Clear timer.
+    clearTimeout(timerForAnimation);
+
+    // Scroll.
+    layoutMain.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    });
+
+    // Loop through.
+    wordList.forEach((word) => {
+      // Remove number.
+      word.removeAttribute(DATA_VISIBLE);
+    });
+
     // Set later.
-    // ==========
+    let i = 0;
 
-    let timerForAnimation;
+    // Helper: recursion.
+    const iterator = () => {
+      // Get word.
+      const word = wordList[i];
 
-    // =============
-    // Get elements.
-    // =============
+      // Word exists?
+      if (word) {
+        // Set number.
+        word.setAttribute(DATA_VISIBLE, true);
 
-    const buttonReveal = document.querySelector(`[${DATA_ACTION}="reveal"]`);
-    const buttonStart = document.querySelector(`[${DATA_ACTION}="start"]`);
-    const layoutMain = document.querySelector('.hw-layout__main');
-    const wordList = document.querySelectorAll('.hw-word');
-    const yearSpan = document.querySelector(`[${DATA_YEAR}]`);
+        // Focus.
+        word.focus();
 
-    // ==============
-    // Event: reveal.
-    // ==============
+      }
 
-    const handleClickReveal = () => {
-        // Clear timer.
-        clearTimeout(timerForAnimation);
-
-        // Loop through.
-        wordList.forEach((word) => {
-            // Hide.
-            word.setAttribute(DATA_VISIBLE, false);
-
-            // Show.
-            word.setAttribute(DATA_VISIBLE, true);
-        });
-    };
-
-    // =============
-    // Event: start.
-    // =============
-
-    const handleClickStart = () => {
-        // Clear timer.
-        clearTimeout(timerForAnimation);
-
-        // Scroll.
-        layoutMain.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'instant'
-        });
-
-        // Loop through.
-        wordList.forEach((word) => {
-            // Remove number.
-            word.removeAttribute(DATA_VISIBLE);
-        });
-
-        // Set later.
-        let i = 0;
-
-        // Helper: recursion.
-        const iterator = () => {
-            // Get word.
-            const word = wordList[i];
-
-            // Word exists?
-            if (word) {
-                // Set number.
-                word.setAttribute(DATA_VISIBLE, true);
-
-                // Focus.
-                word.focus();
-
-            }
-
-            // Keep going?
-            if (i++ < wordList.length) {
-                // Start timer.
-                timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
-            }
-        };
-
-        // Begin.
+      // Keep going?
+      if (i++ < wordList.length) {
+        // Start timer.
         timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
+      }
     };
 
-    // =======================
-    // Helper: insert numbers.
-    // =======================
+    // Begin.
+    timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
+  };
 
-    const insertNumbers = () => {
-        // Loop through.
-        wordList.forEach((word, i) => {
-            // Remove number.
-            word.removeAttribute(DATA_NUMBER);
+  // =======================
+  // Helper: add attributes.
+  // =======================
 
-            // Insert number.
-            word.setAttribute(DATA_NUMBER, i + 1);
-        });
-    };
+  const addAttributes = () => {
+    // Loop through.
+    wordList.forEach((word, i) => {
+      // Add tabindex.
+      word.setAttribute('tabindex', -1);
 
-    // ====================
-    // Helper: insert year.
-    // ====================
+      // Add number.
+      word.setAttribute(DATA_NUMBER, i + 1);
+    });
+  };
 
-    const insertYear = () => {
-        // Get current year.
-        const yearCurrent = new Date().getFullYear();
+  // =================
+  // Helper: add year.
+  // =================
 
-        // Get start year.
-        let yearStart = yearSpan.getAttribute(DATA_YEAR);
-        yearStart = parseFloat(yearStart);
+  const addYear = () => {
+    // Get current year.
+    const yearCurrent = new Date().getFullYear();
 
-        // Get duration.
-        const duration = yearCurrent - yearStart;
+    // Get start year.
+    let yearStart = yearSpan.getAttribute(DATA_YEAR);
+    yearStart = parseFloat(yearStart);
 
-        // Set text.
-        yearSpan.textContent = duration;
-    };
+    // Get duration.
+    const duration = yearCurrent - yearStart;
 
-    // ===================
-    // Helper: add events.
-    // ===================
+    // Set text.
+    yearSpan.textContent = duration;
+  };
 
-    const addEvents = () => {
-        // Prevent doubles.
-        removeEvents();
+  // ===================
+  // Helper: add events.
+  // ===================
 
-        // Add events.
-        buttonReveal.addEventListener(CLICK, handleClickReveal);
-        buttonStart.addEventListener(CLICK, handleClickStart);
-    };
+  const addEvents = () => {
+    // Prevent doubles.
+    removeEvents();
 
-    // ======================
-    // Helper: remove events.
-    // ======================
+    // Add events.
+    buttonReveal.addEventListener(CLICK, handleClickReveal);
+    buttonStart.addEventListener(CLICK, handleClickStart);
+  };
 
-    const removeEvents = () => {
-        // Remove events.
-        buttonReveal.removeEventListener(CLICK, handleClickReveal);
-        buttonStart.removeEventListener(CLICK, handleClickStart);
-    };
+  // ======================
+  // Helper: remove events.
+  // ======================
 
-    // =================
-    // Lifecycle: mount.
-    // =================
+  const removeEvents = () => {
+    // Remove events.
+    buttonReveal.removeEventListener(CLICK, handleClickReveal);
+    buttonStart.removeEventListener(CLICK, handleClickStart);
+  };
 
-    const onMount = () => {
-        // Insert numbers.
-        insertNumbers();
+  // =================
+  // Lifecycle: mount.
+  // =================
 
-        // Insert year.
-        insertYear();
+  const onMount = () => {
+    // Add attributes.
+    addAttributes();
 
-        // Add events.
-        addEvents();
+    // Add year.
+    addYear();
 
-        // Start.
-        handleClickStart();
-    };
+    // Add events.
+    addEvents();
 
-    // ========
-    // Kickoff.
-    // ========
+    // Start.
+    handleClickStart();
+  };
 
-    onMount();
+  // ========
+  // Kickoff.
+  // ========
+
+  onMount();
 })();
 
 // =============

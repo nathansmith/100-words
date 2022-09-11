@@ -28,7 +28,7 @@
   * 3. Use a 4-space tab width in all browsers (opinionated).
   * 4. Remove the grey highlight on links in iOS (opinionated).
   * 5. Prevent adjustments of font size after orientation changes in
-  *    IE on Windows Phone and in iOS.
+  *  IE on Windows Phone and in iOS.
   * 6. Breaks words to prevent overflow in all browsers (opinionated).
   */
 
@@ -498,7 +498,7 @@
  /*
   * 1. Remove the tapping delay in IE 10.
   * 2. Remove the tapping delay on clickable elements
-       in all browsers (opinionated).
+     in all browsers (opinionated).
   */
 
  a,
