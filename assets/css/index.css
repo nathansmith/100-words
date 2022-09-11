@@ -63,8 +63,9 @@ Global.
 }
 
 html {
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 
   color: var(--hw-color-light);
   background-color: var(--hw-layout-footer-background-color);
