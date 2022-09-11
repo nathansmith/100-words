@@ -27,6 +27,7 @@
 
     const buttonReveal = document.querySelector(`[${DATA_ACTION}="reveal"]`);
     const buttonStart = document.querySelector(`[${DATA_ACTION}="start"]`);
+    const layoutMain = document.querySelector('.hw-layout__main');
     const wordList = document.querySelectorAll('.hw-word');
     const yearSpan = document.querySelector(`[${DATA_YEAR}]`);
 
@@ -55,6 +56,9 @@
     const handleClickStart = () => {
         // Clear timer.
         clearTimeout(timerForAnimation);
+
+        // Scroll.
+        layoutMain.scrollTo(0, 0);
 
         // Loop through.
         wordList.forEach((word) => {
