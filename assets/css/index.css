@@ -225,7 +225,7 @@ Button.
 
   font-weight: bold;
   line-height: 1;
-  text-shadow: 0 1px 0 var(--hw-color-white);
+  text-shadow: 0 1px 0 var(--hw-color-light);
   text-transform: uppercase;
 
   margin: 3px;
@@ -263,10 +263,11 @@ Word.
   border-radius: var(--hw-border-radius);
   padding-left: 0.25em;
   padding-right: 0.25em;
+  text-shadow: 0 1px 3px var(--hw-color-dark);
 
   transform: translateY(20%);
   transition-duration: var(--hw-transition-duration);
-  transition-property: background-color, color, opacity, transform;
+  transition-property: background-color, color, opacity, transform, text-shadow;
 
   position: relative;
 }
@@ -274,6 +275,7 @@ Word.
 .hw-word:hover {
   color: var(--hw-color-dark);
   background-color: var(--hw-color-yellow);
+  text-shadow: none;
 }
 
 /*
