@@ -41,9 +41,6 @@
 
     // Loop through.
     wordList.forEach((word) => {
-      // Hide.
-      word.setAttribute(DATA_VISIBLE, false);
-
       // Show.
       word.setAttribute(DATA_VISIBLE, true);
     });
@@ -67,16 +64,19 @@
     // Loop through.
     wordList.forEach((word) => {
       // Remove number.
-      word.removeAttribute(DATA_VISIBLE);
+      word.setAttribute(DATA_VISIBLE, false);
     });
 
     // Set later.
-    let i = 0;
+    let wordIndex = 0;
 
-    // Helper: recursion.
-    const iterator = () => {
+    // =======================
+    // Helper: show next word.
+    // =======================
+
+    const showNextWord = () => {
       // Get word.
-      const word = wordList[i];
+      const word = wordList[wordIndex];
 
       // Word exists?
       if (word) {
@@ -88,20 +88,29 @@
       }
 
       // Keep going?
-      if (++i < wordList.length) {
-        // Await frame.
-        window.requestAnimationFrame(() => {
-          // Start timer.
-          timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
-        });
+      if (++wordIndex < wordList.length) {
+        // Start timer.
+        startTimer();
       }
     };
 
-    // Await frame.
-    window.requestAnimationFrame(() => {
-      // Begin.
-      timerForAnimation = setTimeout(iterator, ANIMATION_DELAY);
-    });
+    // ====================
+    // Helper: start timer.
+    // ====================
+
+    const startTimer = () => {
+      // Await frame.
+      window.requestAnimationFrame(() => {
+        // Start timer.
+        timerForAnimation = setTimeout(showNextWord, ANIMATION_DELAY);
+      });
+    };
+
+    // ============
+    // Start timer.
+    // ============
+
+    startTimer();
   };
 
   // =======================
