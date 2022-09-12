@@ -147,9 +147,9 @@ Layout: main.
 
   /* prettier-ignore */
   font-size: clamp(
-    1.25rem,
+    20px,
     min(5vw, 5vh),
-    3.125rem
+    50px
   );
 
   overflow-x: hidden;
