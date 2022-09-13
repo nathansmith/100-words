@@ -44,6 +44,21 @@ Variables.
 }
 
 /*
+================================
+Accessibility: remove animation.
+================================
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+	*:after,
+	*:before {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+/*
 =======
 Global.
 =======

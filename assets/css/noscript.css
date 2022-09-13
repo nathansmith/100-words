@@ -1,0 +1,11 @@
+/*
+==============
+Word: visible.
+==============
+*/
+
+.hw-word {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: none !important;
+}
