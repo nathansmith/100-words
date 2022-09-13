@@ -29,7 +29,7 @@ Variables.
   /* Layout. */
   --hw-layout-main-background-color-dark: #292623;
   --hw-layout-main-background-color-light: #494643;
-  --hw-layout-main-circles-border: min(5vw, 5vh);
+  --hw-layout-main-circles-border: min(10vw, 10vh);
   --hw-layout-main-circles-shadow: min(5vw, 5vh);
   --hw-layout-main-circles-size: min(100vw, 100vh);
   --hw-layout-footer-background-color: #191613;
