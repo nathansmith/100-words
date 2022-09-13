@@ -6,7 +6,7 @@ Variables.
 
 :root {
   /* Animation duration. */
-  --hw-animation-duration: 30s;
+  --hw-animation-duration: 60s;
 
   /* Border radius. */
   --hw-border-radius: 3px;
