@@ -9,3 +9,13 @@ Word: visible.
   pointer-events: auto !important;
   transform: none !important;
 }
+
+/*
+===============
+Layout: footer.
+===============
+*/
+
+.hw-layout__footer {
+  display: none !important;
+}
