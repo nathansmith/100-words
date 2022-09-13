@@ -32,11 +32,11 @@ Variables.
   /* Layout. */
   --hw-layout-main-background-color-dark: #292623;
   --hw-layout-main-background-color-light: #494643;
-  --hw-layout-main-circles-border: min(10vw, 10vh);
-  --hw-layout-main-circles-border-animated: min(5vw, 5vh);
-  --hw-layout-main-circles-shadow: min(5vw, 5vh);
-  --hw-layout-main-circles-shadow-animated: min(2.5vw, 2.5vh);
-  --hw-layout-main-circles-size: min(100vw, 100vh);
+  --hw-layout-main-circles-border: max(10vw, 10vh);
+  --hw-layout-main-circles-border-animated: max(5vw, 5vh);
+  --hw-layout-main-circles-shadow: max(5vw, 5vh);
+  --hw-layout-main-circles-shadow-animated: max(2.5vw, 2.5vh);
+  --hw-layout-main-circles-size: max(85vw, 85vh);
   --hw-layout-footer-background-color: #191613;
 
   /* Transition duration. */
