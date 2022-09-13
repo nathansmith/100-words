@@ -29,6 +29,9 @@ Variables.
   /* Layout. */
   --hw-layout-main-background-color-dark: #292623;
   --hw-layout-main-background-color-light: #494643;
+  --hw-layout-main-circles-border: min(5vw, 5vh);
+  --hw-layout-main-circles-shadow: min(5vw, 5vh);
+  --hw-layout-main-circles-size: min(100vw, 100vh);
   --hw-layout-footer-background-color: #191613;
 
   /* Transition duration. */
@@ -160,7 +163,46 @@ Layout: main.
   padding-left: var(--hw-gutter);
   padding-right: var(--hw-gutter);
   padding-bottom: var(--hw-gutter-double);
+
+  position: relative;
 }
+
+.hw-layout__main:after,
+.hw-layout__main:before {
+  content: '';
+
+  border-color: rgba(255, 255, 255, 0.02);
+  border-radius: calc(var(--hw-layout-main-circles-size) / 2);
+  border-style: double;
+  border-width: var(--hw-layout-main-circles-border);
+
+  box-shadow: 0 0 0 var(--hw-layout-main-circles-shadow) rgba(0, 0, 0, 0.03);
+
+  width: var(--hw-layout-main-circles-size);
+  height: var(--hw-layout-main-circles-size);
+
+  position: fixed;
+}
+
+.hw-layout__main:after {
+  background: rgba(255, 0, 0, 0.02);
+  transform: translate(25%, -25%);
+  top: 0;
+  right: 0;
+}
+
+.hw-layout__main:before {
+  background: rgba(0, 0, 255, 0.02);
+  transform: translate(-25%, 25%);
+  left: 0;
+  bottom: 0;
+}
+
+/*
+=====================
+Layout: main - inner.
+=====================
+*/
 
 .hw-layout__main__inner {
   display: flex;
@@ -173,6 +215,9 @@ Layout: main.
 
   max-width: 30em;
   min-height: 100%;
+
+  position: relative;
+  z-index: 1;
 }
 
 .hw-layout__main__inner__content {
@@ -195,6 +240,8 @@ Layout: footer.
 
   gap: var(--hw-gutter);
   padding: var(--hw-gutter);
+
+  position: relative;
 }
 
 /*
