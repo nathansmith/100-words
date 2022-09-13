@@ -27,8 +27,8 @@ Variables.
   --hw-gutter-double: calc(var(--hw-gutter) * 2);
 
   /* Layout. */
-  --hw-layout-main-background-color-start: #292623;
-  --hw-layout-main-background-color-end: #494643;
+  --hw-layout-main-background-color-dark: #292623;
+  --hw-layout-main-background-color-light: #494643;
   --hw-layout-footer-background-color: #191613;
 
   /* Transition duration. */
@@ -139,8 +139,8 @@ Layout: main.
   /* prettier-ignore */
   background-image: linear-gradient(
     -45deg,
-    var(--hw-layout-main-background-color-start),
-    var(--hw-layout-main-background-color-end)
+    var(--hw-layout-main-background-color-dark),
+    var(--hw-layout-main-background-color-light)
   );
 
   font-family: var(--hw-font-family-serif);

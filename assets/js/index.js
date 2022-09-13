@@ -99,6 +99,9 @@
     // ====================
 
     const startTimer = () => {
+      // Clear timer.
+      clearTimeout(timerForAnimation);
+
       // Await frame.
       window.requestAnimationFrame(() => {
         // Start timer.
