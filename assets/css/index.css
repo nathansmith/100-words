@@ -51,11 +51,14 @@ Accessibility: remove animation.
 
 @media (prefers-reduced-motion: reduce) {
   *,
-	*:after,
-	*:before {
-		animation: none !important;
-		transition: none !important;
-	}
+  *:after,
+  *:before {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+  }
 }
 
 /*
