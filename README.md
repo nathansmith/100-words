@@ -1,4 +1,4 @@
-# 100-words
+# 100 Words Intro
 
 Fellow internet traveler:
 
